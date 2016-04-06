@@ -18,6 +18,7 @@ import os
 path = raw_input("Enter the absolute path \n"
 				 "(using '/' for suggestion): ")
 ext = raw_input("Enter the extension name: ")
+prefix = raw_input("Enter the prefix (Enter directly if you don't need a prefix): ")
 
 try:
 	os.listdir(path)
@@ -31,6 +32,7 @@ except WindowsError:
 
 if path[-1] != ('/' or '\\'):
 	path = path + '/' 
+
 
 # create a temp file 
 tmpPath = 'c:/'
@@ -62,7 +64,7 @@ while(True):
 # such as 0001.bmp, 0002.bmp
 newNames = []
 for item in tmpContent:
-	newNames.append(item + '.' + ext)
+	newNames.append(prefix + item + '.' + ext)
 
 
 # rename
