@@ -37,20 +37,23 @@ def get4moments(Img,N):
 		# y: 对应的像素值
 		# 由于计算的是四阶矩，每个像素都要4次方，其值可能大于255
 		# 如果大于255，用100除， 100是文章中推荐的值
-		print x,y
+		# print x,y
 		if y/100 > 255:
 			HOSMap[x] = 255
 
 	return HOSMap
 
 if __name__ == '__main__':
-	img = cv2.imread("/Users/Haoyang/Downloads/Pics/lowFlower.jpg",0)
+
+	absName = "C:/Users/Administrator/Desktop/result1.bmp"
+	img = cv2.imread(absName,0)
 	cv2.imshow('c',img)
 	HosMap = get4moments(img,3)
 	print HosMap.dtype, HosMap.shape
-	# cv2.imshow("a", HosMap)
+	cv2.imshow("a", HosMap)
+	cv2.imwrite("C:/Users/Administrator/Desktop/result2.bmp",HosMap)
 
-	# if cv2.waitKey() == 27:
-	# 	cv2.destroyAllWindows()
+	if cv2.waitKey() == 27:
+		cv2.destroyAllWindows()
 
 
