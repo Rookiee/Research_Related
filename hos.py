@@ -61,7 +61,7 @@ def GaussianFilter(img, N):
 if __name__ == '__main__':
 
     # 	# 绝对路径
-    absName = "C:/Users/Administrator/Desktop/0000.bmp"
+    absName = "C:/Users/Administrator/Desktop/0100.bmp"
     img = cv2.imread(absName, 0)
 
     imgGaussian = GaussianFilter(img, 7)
@@ -98,6 +98,15 @@ if __name__ == '__main__':
 
     # cv2.imshow("test", lastImg)
     '''
+
+    kernel = np.ones((3,3), np.uint8)
+
+    closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
+    cv2.imshow("Closing", closing)
+    cv2.imwrite("C:/Users/Administrator/Desktop/closing.bmp", closing)
+
+    canny = cv2.Canny(closing, 100,200)
+    cv2.imshow("Contour", canny)
     if cv2.waitKey() == 27:
         cv2.destroyWindow()
 
